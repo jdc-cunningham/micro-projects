@@ -5,10 +5,9 @@ I had actually built a calendar from the ground up before using PHP/JavaScript b
 Just have to match FullCalendar's dimensions. I'm also uncertain about using the React version vs. just plain JavaScript. Unsure because I'm not a pro at React.
 
 # Design
+These are the main interfaces, it's not really anything special just a way to "quantify reality" ha eg. a budget.
+
+![sketch](bill-calendar.JPG)
 
 # Thoughts
 I'm mostly using FullCalendar for managing the days, I'm not really using any of it's built in stuff other than cell/week selectors. I'm barely using the capability of the app eg. being able to write notes and what not. I'm just going to put a number(bill count) per days/week row.
-
-These are the main interfaces, it's not really anything special just a way to "quantify reality" ha eg. a budget.
-
-[sketch](bill-calendar.JPG)
