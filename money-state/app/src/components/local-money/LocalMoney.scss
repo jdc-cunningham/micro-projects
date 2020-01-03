@@ -1,0 +1,53 @@
+.LocalMoney {
+    position: relative;
+    display: inline-block;
+    width: 30%;
+    min-width: 500px;
+    border: 1px solid #aaa;
+
+    &::before {
+        content: '';
+        display: block;
+        width: 100%;
+        padding-top: 100%; // makes square
+    }
+}
+
+.center-circle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%); // center
+    border-radius: 50%;
+    cursor: pointer; // set clickable but not functional yet
+}
+
+.LocalMoney__hover-display {
+    @extend .center-circle;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 50%;
+    height: 50%;
+    background-color: white;
+    font-size: 0.75rem;
+
+    .LocalMoney__main-display {
+        font-size: 1.5rem;
+    }
+}
+
+.LocalMoney__hover-circle {
+    @extend .center-circle;
+    width: 60%;
+    height: 60%;
+    background-color: chocolate;
+
+    &.student-loans {
+        width: 70%;
+        height: 70%;
+        background-color: firebrick;
+    }
+}
+

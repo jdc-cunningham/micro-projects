@@ -6,6 +6,8 @@
         - [ ] two rows
             - [ ] top row
                 - [ ] concentric overview
+                    - [x] basic working hover/change display
+                    - [ ] extra: popup display to explain break down
                 - [ ] upcoming bills in chronological order
                     - [ ] add bill interface(popup)
                     - [ ] rows
