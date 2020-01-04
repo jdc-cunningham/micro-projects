@@ -38,9 +38,6 @@ class LocalMoney extends Component {
     }
 
     defaultDisplay() {
-        // const curState = this.state;
-        // curState.activeDisplay = this.state.cash;
-        // this.setState(curState);
         this.setState({
             activeDisplay: {
                 amount: this.state.cash.amount,
