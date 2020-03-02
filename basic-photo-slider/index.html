@@ -23,6 +23,7 @@
             const display = document.getElementById('photo-display');
             const prevImg = document.getElementById('prev');
             const nextImg = document.getElementById('next');
+            const fileExt = 'jpg';
 
             const imageCount = 3; // this number matches count of images in /photos folder
             let curImg = 1; // make sure your first image starts at 1, this code starts at 1 not 0
@@ -49,7 +50,7 @@
 
             const loadNextImage = (next) => {
                 curImg = edgeCheck(next);
-                display.style.backgroundImage = `url('./photos/${curImg}.jpg')`;
+                display.style.backgroundImage = `url('./photos/${curImg}.${fileExt}')`;
             }
             
             prevImg.addEventListener('click', () => {
