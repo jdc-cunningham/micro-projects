@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Basic Photo Slider</title>
+        <link rel="stylesheet" href="./css-reset.css">
+        <link rel="stylesheet" href="./index.css">
+    </head>
+    <body>
+        <div id="photo-display" style="background-image: url('./photos/1.jpg');">
+            <div id="photo-display__nav-btns">
+                <button type="button" id="prev" class="nav-btns">prev</button>
+                <button type="button" id="next" class="nav-btns">next</button>
+            </div>
+        </div>
+        <script>
+            /**
+              * Note: this image cycler just uses integers, this assumes your files all are of
+              * the same format eg .jpg and then uses a basic range/active integer to cycle images.
+              * the only thing to consider is if order matters
+            */
+            const display = document.getElementById('photo-display');
+            const prevImg = document.getElementById('prev');
+            const nextImg = document.getElementById('next');
+
+            const imageCount = 3; // this number matches count of images in /photos folder
+            let curImg = 1; // make sure your first image starts at 1, this code starts at 1 not 0
+
+            const edgeCheck = (next) => {
+                if (next) {
+                    if ((curImg + 1) <= imageCount) {
+                        return curImg + 1;
+                    } else {
+                        return 1;
+                    }
+                }
+
+                if (!next) {
+                    if ((curImg -1) >= 1) {
+                        return curImg -1
+                    } else {
+                        return imageCount;
+                    }
+                }
+
+                return false;
+            }
+
+            const loadNextImage = (next) => {
+                curImg = edgeCheck(next);
+                display.style.backgroundImage = `url('./photos/${curImg}.jpg')`;
+            }
+            
+            prevImg.addEventListener('click', () => {
+                loadNextImage(false);
+            });
+
+            nextImg.addEventListener('click', () => {
+                loadNextImage(true);
+            });
+        </script>
+    </body>
+</html>
