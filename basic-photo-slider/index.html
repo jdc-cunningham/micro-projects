@@ -8,7 +8,11 @@
         <link rel="stylesheet" href="./index.css">
     </head>
     <body>
-        <div id="photo-display" style="background-image: url('./photos/1.jpg');">
+        <div id="photo-display">
+            <span id="loading-status">
+                Loading image<span id="loaded-counter">1</span>...
+                <img src="./ajax-spinner.gif" id="ajax-spinner" />
+            </span>
             <div id="photo-display__nav-btns">
                 <button type="button" id="prev" class="nav-btns">prev</button>
                 <button type="button" id="next" class="nav-btns">next</button>
@@ -23,10 +27,13 @@
             const display = document.getElementById('photo-display');
             const prevImg = document.getElementById('prev');
             const nextImg = document.getElementById('next');
+            const loadingStatus = document.getElementById('loading-status');
+            const loadingCounter = document.getElementById('loaded-counter');
             const fileExt = 'jpg';
 
             const imageCount = 3; // this number matches count of images in /photos folder
             let curImg = 1; // make sure your first image starts at 1, this code starts at 1 not 0
+            let loadedImgs = 1;
 
             const edgeCheck = (next) => {
                 if (next) {
@@ -53,6 +60,25 @@
                 display.style.backgroundImage = `url('./photos/${curImg}.${fileExt}')`;
             }
             
+            const preloadImage = (loadedImgs) => {
+                const img = new Image();
+                img.src = `./photos/${loadedImgs}.${fileExt}`;
+                img.onload = () => {
+                    const nextImg = loadedImgs + 1;
+                    if (nextImg > imageCount) {
+                        // load first image
+                        loadingStatus.remove();
+                        display.style.backgroundImage = `url('./photos/${curImg}.${fileExt}')`;
+                    } else {
+                        loadingCounter.innerText = nextImg;
+                        loadedImgs += 1;
+                        preloadImage(loadedImgs);
+                    }
+                }
+            }
+
+            preloadImage(loadedImgs);
+
             prevImg.addEventListener('click', () => {
                 loadNextImage(false);
             });
